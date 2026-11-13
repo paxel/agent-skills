@@ -1,0 +1,17 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "agent-skills",
+  "description": "A few working-style skills for Claude Code: blunt replies, complaint intake, policy reloading and carrying a milestone to done.",
+  "owner": {
+    "name": "paxel",
+    "url": "https://github.com/paxel"
+  },
+  "plugins": [
+    {
+      "name": "agent-skills",
+      "description": "Working-style skills: blunt-replies, customer-service, refresh, long-walk.",
+      "source": "./",
+      "category": "productivity"
+    }
+  ]
+}

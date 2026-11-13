@@ -1,0 +1,18 @@
+{
+  "name": "agent-skills",
+  "version": "0.1.0",
+  "description": "Working-style skills: blunt-replies, customer-service, refresh, long-walk.",
+  "author": {
+    "name": "paxel",
+    "url": "https://github.com/paxel"
+  },
+  "repository": "https://github.com/paxel/agent-skills",
+  "license": "MIT",
+  "keywords": ["skills", "productivity", "workflow"],
+  "skills": [
+    "./skills/blunt-replies",
+    "./skills/customer-service",
+    "./skills/refresh",
+    "./skills/long-walk"
+  ]
+}
