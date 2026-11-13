@@ -1,7 +1,7 @@
 {
   "name": "agent-skills",
-  "version": "0.1.0",
-  "description": "Working-style skills: blunt-replies, customer-service, refresh, long-walk.",
+  "version": "0.2.0",
+  "description": "Working-style skills: blunt-replies, customer-service, refresh, long-walk, ship-it.",
   "author": {
     "name": "paxel",
     "url": "https://github.com/paxel"
@@ -13,6 +13,7 @@
     "./skills/blunt-replies",
     "./skills/customer-service",
     "./skills/refresh",
-    "./skills/long-walk"
+    "./skills/long-walk",
+    "./skills/ship-it"
   ]
 }

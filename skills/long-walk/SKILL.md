@@ -115,6 +115,8 @@ fine; one commit never holds two tickets.
    - every decision taken without asking
    - what was not verified (nothing seen on a screen, nothing heard, …)
    - what is the user's now: push, pull request, release
+   - the next step: `agent-skills:ship-it` gets the commits through the
+     local gate, the CI and the review, when the user starts it
 3. Stop. No push, no pull request.
 
 ## Guidelines

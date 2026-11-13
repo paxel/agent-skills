@@ -18,6 +18,7 @@ Skills are then available as `agent-skills:<name>`.
 - [customer-service](skills/customer-service/SKILL.md): collect complaints without fixing anything until the queue is closed, then grill them one question at a time.
 - [refresh](skills/refresh/SKILL.md): reload your standing policy skills ("take your pills") and acknowledge each one.
 - [long-walk](skills/long-walk/SKILL.md): after a grilling, carry a whole milestone to committed code without asking, one commit per ticket.
+- [ship-it](skills/ship-it/SKILL.md): after a long walk, run everything the CI would run, push, read the CI result and weigh the review comments; fix and repeat until green.
 
 ## Works best with Matt Pocock's skills
 
@@ -43,6 +44,19 @@ A line may carry arguments after the skill name; empty lines and `#` comments ar
 style-plugin:terse-mode full
 my-commit-rules
 agent-skills:blunt-replies
+```
+
+## shipping-rules.md
+
+`ship-it` checks the rules in `~/.claude/shipping-rules.md` (all repos) and in the repo's
+`docs/agents/shipping-rules.md` (adds to the global ones). One rule per bullet, in plain language;
+a command in backticks is run exactly as written. Say "from now on, …" during a run and `ship-it`
+writes the rule down for you.
+
+```
+- The changelog has an entry for every user-visible change.
+- The version is bumped compared to the last tag.
+- No dependency has a known vulnerability: `cargo deny check`
 ```
 
 ## License

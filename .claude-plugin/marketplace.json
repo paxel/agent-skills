@@ -9,7 +9,7 @@
   "plugins": [
     {
       "name": "agent-skills",
-      "description": "Working-style skills: blunt-replies, customer-service, refresh, long-walk.",
+      "description": "Working-style skills: blunt-replies, customer-service, refresh, long-walk, ship-it.",
       "source": "./",
       "category": "productivity"
     }
