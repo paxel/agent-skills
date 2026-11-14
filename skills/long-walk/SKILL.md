@@ -100,8 +100,8 @@ fine; one commit never holds two tickets.
    - It keeps `ready-for-agent`.
    - The march goes on with the rest.
 4. Green: for each ticket the checkpoint covered, remove `ready-for-agent`,
-   add `implemented`, and comment with the commit hash and the decisions
-   that were taken for it without the user. Tickets stay open; they are
+   add `implemented`, and comment with the decisions that were taken for
+   it without the user. Tickets stay open; they are
    closed when the release ships, and not by this skill.
 5. The branch compiles and its touched tests pass after every checkpoint.
    Do not march on from a red checkpoint.
