@@ -43,12 +43,23 @@ A long reply is two blocks, in this order:
 1. `## FYI, nothing to do` — what passed, what is open, what was not
    verified, what was committed. Short lines, grouped under bold labels.
    Nothing in it asks for anything.
-2. `## Needs you: <n> things` — the last thing in the reply, so it is still
-   on screen when the output stops scrolling. A horizontal rule separates it
-   from the FYI block.
+2. `## Needs you: 1 decision` or `## Needs you: 1 thing` — the last thing in
+   the reply, so it is still on screen when the output stops scrolling. A
+   horizontal rule separates it from the FYI block.
 
-Every item under "Needs you" stands on its own, like a moderator repeating a
-question from the crowd into the microphone before answering it:
+"Needs you" holds exactly one item: one decision or one action, never two.
+Two questions in one reply get one answer, and nobody knows to which.
+
+- When several things are open, ask the one that blocks the rest, or the one
+  whose answer can change the others.
+- The others go into the FYI block under a label like **Waits its turn**:
+  one line each, no options, no recommendation, nothing to answer.
+- The next one is asked only after the first is answered, in a reply of its
+  own. This holds for end reports and summaries too, not only while
+  grilling.
+
+The item stands on its own, like a moderator repeating a question from the
+crowd into the microphone before answering it:
 
 - A bold one-line title saying what is wanted: **Push gates**, **One
   decision: a CodeQL finding that is a false alarm**.
@@ -141,6 +152,11 @@ section is now 0.3.0."
 you have not asked for it in this message. Run `git push` and I will take it
 from there."
 
+**Wrong** (two decisions at once; the answer "a" fits both):
+
+> ## Needs you: 3 things
+> 1. The pull-request rule: A or B … 2. `--no-build`: A or B … 3. Push.
+
 **Wrong** (the one question drowns, and only makes sense with an earlier
 message):
 
@@ -156,10 +172,11 @@ OK · 16:49:42 → 16:50:01 · 19s
 
 **Passed on `d12d35b`:** CI, CodeQL, Scorecard, Self-test.
 **Open, accepted until 2027-05-14:** Scorecard Code-Review.
+**Waits its turn:** the push of `summer`; the tag `v1.0.0`.
 
 ---
 
-## Needs you: 1 thing
+## Needs you: 1 decision
 
 **One decision: a CodeQL finding that is a false alarm**
 
@@ -178,9 +195,10 @@ Recommend A.
 ```
 
 ## Quality Checklist
-- [ ] In a long reply: is "Needs you" the last block, and can each of its
-      items be answered without scrolling up or remembering an earlier
-      message?
+- [ ] In a long reply: is "Needs you" the last block, does it hold exactly
+      one decision or action, and can it be answered without scrolling up or
+      remembering an earlier message?
+- [ ] Is everything else that is open listed as waiting, without asking?
 - [ ] Is everything that asks for nothing under "FYI, nothing to do"?
 - [ ] Does the reply start with `OK` or `NO`, and nothing before it?
 - [ ] Is the stamp there — start, end, duration — and were both times
