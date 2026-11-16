@@ -33,7 +33,39 @@ standing policy, not a per-task tool.
    and the duration is the plainest form that fits: `4s`, `6m16s`, `1h02m`.
 4. After the stamp, the substance: what was done, what changed, what is
    still open, or — after `NO` — why not, in one sentence, and the nearest
-   thing that can be done.
+   thing that can be done. A reply longer than a few lines follows the
+   layout below.
+
+## Layout: what is the user's goes last
+
+A long reply is two blocks, in this order:
+
+1. `## FYI, nothing to do` — what passed, what is open, what was not
+   verified, what was committed. Short lines, grouped under bold labels.
+   Nothing in it asks for anything.
+2. `## Needs you: <n> things` — the last thing in the reply, so it is still
+   on screen when the output stops scrolling. A horizontal rule separates it
+   from the FYI block.
+
+Every item under "Needs you" stands on its own, like a moderator repeating a
+question from the crowd into the microphone before answering it:
+
+- A bold one-line title saying what is wanted: **Push gates**, **One
+  decision: a CodeQL finding that is a false alarm**.
+- What the thing is in plain words, and where: the rule's name and the
+  file and line, never "alert 12", "option (b)" or any other label that only
+  an earlier message explains.
+- Why it matters: what stays red or blocked without it.
+- For a decision, the options side by side, each with what will be done,
+  the result and the downside, and then the recommendation.
+- For an action, what has to happen and on what, in one or two lines.
+
+An item that is still open in the next reply is restated in full there, not
+referred to ("still waiting for (a)/(b)").
+
+Nothing needed from the user: leave the block out; the reply is then the
+stamp, a line of outcome and, if long, the FYI block. A reply of a few lines
+needs no headings at all.
 
 ## Taking the times
 
@@ -109,7 +141,47 @@ section is now 0.3.0."
 you have not asked for it in this message. Run `git push` and I will take it
 from there."
 
+**Wrong** (the one question drowns, and only makes sense with an earlier
+message):
+
+> Commits: `ba7c997`, `ea347fa`, `bc78792` … 30 lines of results … Still
+> waiting: push, and (a)/(b) for alert 12.
+
+**Right:**
+
+```
+OK · 16:49:42 → 16:50:01 · 19s
+
+## FYI, nothing to do
+
+**Passed on `d12d35b`:** CI, CodeQL, Scorecard, Self-test.
+**Open, accepted until 2027-05-14:** Scorecard Code-Review.
+
+---
+
+## Needs you: 1 thing
+
+**One decision: a CodeQL finding that is a false alarm**
+
+- What: rule "clear-text logging of sensitive data" on
+  `scripts/alerts_gate.py:142`, the line `print(line)`.
+- Why it fires: the script prints GitHub's field `secret_type`; CodeQL takes
+  the name for a secret. Only the type is printed, never the value.
+- Why it matters: it is the last finding that fails the weekly Security run.
+
+| Option | What I do                         | Result          | Downside                             |
+|--------|-----------------------------------|-----------------|--------------------------------------|
+| A      | Accept the rule in the ignore file | Green for sure  | Hides a real finding of the same rule |
+| B      | Read the field through a constant  | Probably green  | Unproven, maybe one more push round   |
+
+Recommend A.
+```
+
 ## Quality Checklist
+- [ ] In a long reply: is "Needs you" the last block, and can each of its
+      items be answered without scrolling up or remembering an earlier
+      message?
+- [ ] Is everything that asks for nothing under "FYI, nothing to do"?
 - [ ] Does the reply start with `OK` or `NO`, and nothing before it?
 - [ ] Is the stamp there — start, end, duration — and were both times
       actually read from the clock rather than guessed?
